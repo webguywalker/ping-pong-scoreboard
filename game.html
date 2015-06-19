@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<style>
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="row text-center" style="font-size:50px"> 
+		<div class="col-md-4" id="name-left">Player 1</div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4" id="name-right">Player 2</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-md-4" id="left-score">0</div>
+		<div class="col-md-4">Score</div>
+		<div class="col-md-4" id="right-score">0</div>
+	</div>
+	<div class="row text-center names">
+		<div class="col-md-4"><input id="left-input" type="text"></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4"><input id="right-input" type="text"></div>
+	</div>
+</body>
+	<script type="text/javascript">
+		jQuery("#left-input").on("change",function(e){
+			var $this = $(this);
+			$("#name-left").html($this.val());
+		});
+		jQuery("#right-input").on("change",function(e){
+			var $this = $(this);
+			$("#name-right").html($this.val());
+		});
+		jQuery("body").on("keydown",function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			var scoreId = "";
+			switch(e.keyCode){
+				case 37:
+				scoreId = "#right-score"
+				break;
+				case 39:
+
+				scoreId = "#left-score"
+				break;
+			}
+			var score = parseInt($(scoreId).html());
+			score++;
+			$(scoreId).html(score);
+		});
+	</script>
+</html>
